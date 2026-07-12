@@ -70,6 +70,43 @@ const toggleMute = (e) => {
         Your browser does not support the video tag.
       </video>
 
+      {/* Floating Video Controls */}
+<div className="absolute top-20 right-6 z-40 flex items-center gap-3">
+
+  {/* Mute */}
+  <button
+    onClick={toggleMute}
+    className="w-12 h-12 rounded-full bg-black/40 border border-white/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#ff2a2a] transition-all"
+  >
+    {isMuted ? (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M16.5 12L19 14.5M19 9.5L16.5 12M19 9.5L16.5 12M19 14.5L16.5 12M5 9H2v6h3l4 4V5L5 9z"/>
+      </svg>
+    ) : (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M5 9H2v6h3l4 4V5L5 9zm8.5-2.5a5 5 0 010 11"/>
+      </svg>
+    )}
+  </button>
+
+  {/* Play Pause */}
+  <button
+    onClick={toggleVideo}
+    className="w-12 h-12 rounded-full bg-black/40 border border-white/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#ff2a2a] transition-all"
+  >
+    {!isPlaying ? (
+      <svg className="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    ) : (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    )}
+  </button>
+
+</div>
+
       {/* Left Floating Social Bar for Large Screens */}
       <div className="hidden lg:flex flex-col gap-6 fixed left-6 top-1/2 -translate-y-1/2 z-50 mix-blend-difference">
         <a 
@@ -182,39 +219,9 @@ const toggleMute = (e) => {
           </div>
         </div>
 
-        {/* Right Side: Play Video Button */}
-        <div 
-          data-aos="zoom-in"
-          data-aos-delay="600"
-          className="mt-8 md:mt-0 flex flex-row md:flex-col items-center gap-2 md:gap-3 cursor-pointer group self-start md:self-auto"
-          onClick={toggleVideo}
-        >
-          <button
-  onClick={toggleMute}
-  className="w-12 h-12 rounded-full bg-black/40 border border-white text-white backdrop-blur-md hover:bg-[#ff2a2a] transition-all"
->
-  {isMuted ? "🔇" : "🔊"}
-</button>
-          <div className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 bg-black/20 backdrop-blur-md flex justify-center items-center group-hover:scale-110 group-hover:bg-[#ff2a2a] transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_40px_rgba(255,42,42,0.6)]">
-            {!isPlaying  ? (
-              // Play Icon
-              <svg className="w-5 h-5 md:w-8 md:h-8 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            ) : (
-              // Pause Icon
-              <svg className="w-5 h-5 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            )}
-            
-          </div>
-          <span className="text-white text-[10px] md:text-xs font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity">
-            {!isPlaying  ? "Play Reel" : "Pause"}
-          </span>
-        </div>
-      </div>
-
+        
+        
+</div>
       {/* Scroll Indicator */}
       <div 
         data-aos="fade-up"
