@@ -7,40 +7,65 @@ import { heroContent, personalInfo, socialLinks } from '../data/portfolioData';
 const Hero = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: 'ease-out'
-    });
-    // Video does NOT autoplay anymore
-  }, []);
+  AOS.init({
+    duration: 1000,
+    once: true,
+    easing: "ease-out",
+  });
+
+  if (videoRef.current) {
+    videoRef.current.muted = true;
+    videoRef.current.play();
+    setIsPlaying(true);
+  }
+}, []);
+
+const toggleMute = (e) => {
+  e.stopPropagation();
+
+  if (!videoRef.current) return;
+
+  const newMuted = !isMuted;
+
+  videoRef.current.muted = newMuted;
+  setIsMuted(newMuted);
+};
 
   const toggleVideo = (e) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
+  e.stopPropagation();
+
+  if (!videoRef.current) return;
+
+   // Sound on
+
+  if (videoRef.current.paused) {
+    videoRef.current.currentTime = 0;
+    videoRef.current.play();
+    setIsPlaying(true);
+  } else {
+    videoRef.current.pause();
+    setIsPlaying(false);
+  }
+};
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#f93838b6] " >
       {/* Background Video */}
-      <video
-        ref={videoRef}
-        loop
-        muted={isMuted}
-        playsInline
-        className="absolute top-0 left-0 w-screen h-screen object-contain z-0"
-      >
+ <video
+  ref={videoRef}
+  autoPlay
+  muted={isMuted}
+  playsInline
+  preload="auto"
+  onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
+  onEnded={() => setIsPlaying(false)}
+  className="absolute top-0 left-0 w-screen h-screen object-contain z-0"
+>
         <source src={heroVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -164,8 +189,14 @@ const Hero = () => {
           className="mt-8 md:mt-0 flex flex-row md:flex-col items-center gap-2 md:gap-3 cursor-pointer group self-start md:self-auto"
           onClick={toggleVideo}
         >
+          <button
+  onClick={toggleMute}
+  className="w-12 h-12 rounded-full bg-black/40 border border-white text-white backdrop-blur-md hover:bg-[#ff2a2a] transition-all"
+>
+  {isMuted ? "🔇" : "🔊"}
+</button>
           <div className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 bg-black/20 backdrop-blur-md flex justify-center items-center group-hover:scale-110 group-hover:bg-[#ff2a2a] transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_40px_rgba(255,42,42,0.6)]">
-            {!isPlaying || isMuted ? (
+            {!isPlaying  ? (
               // Play Icon
               <svg className="w-5 h-5 md:w-8 md:h-8 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
@@ -176,9 +207,10 @@ const Hero = () => {
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
               </svg>
             )}
+            
           </div>
           <span className="text-white text-[10px] md:text-xs font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity">
-            {!isPlaying || isMuted ? "Play Reel" : "Pause"}
+            {!isPlaying  ? "Play Reel" : "Pause"}
           </span>
         </div>
       </div>

@@ -28,7 +28,7 @@ export const socialLinks = {
 
 export const heroContent = {
   greeting: "Hi, I'm Shawaiz",
-  titleHighlight: "Full Stack & Java Developer",
+  titleHighlight: "Full Stack Developer",
   subtitle:
     "I build fast, scalable applications using Javascript, html, css, Bootstrap, React js, and Python.",
   ctaPrimary: { text: "View My Work", href: "#projects" },
