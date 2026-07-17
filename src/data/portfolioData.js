@@ -20,6 +20,7 @@ export const personalInfo = {
   resumeUrl: "/Shawaiz_Resume_2026.pdf",
 };
 
+
 export const socialLinks = {
   github: "https://github.com/alberteinstein9834-ai",
   linkedin: "https://linkedin.com/",
@@ -166,39 +167,8 @@ export const contentCreation = {
   ]
 };
 
-// Brand New Leadership Data
-export const leadershipList = [
-  {
-    title: "IEEE HAMZA IRSHAD Section (Social Media Team)",
-    description: "Managed and coordinated digital content, driving audience engagement and designing interactive visual campaigns for tech events.",
-    role: "Social Media Coordinator",
-    badge: "Volunteer"
-  },
-  {
-    title: "Team Coordinator – Go-Kart International Racing 2K25",
-    description: "Led multi-disciplinary teams in project management, budget control, and logistics coordination for a high-profile international racing event.",
-    role: "Team Coordinator",
-    badge: "Leadership"
-  },
-  {
-    title: "5-Day MOE IDE Bootcamp, Roorkee",
-    description: "Participated in an intensive Innovation, Design, and Entrepreneurship Bootcamp organized by the Ministry of Education at IIT Roorkee.",
-    role: "Bootcamp Graduate",
-    badge: "Innovation"
-  },
-  {
-    title: "Hosted INFORIA Tech Summit Hackathon",
-    description: "Organized and hosted the flagship hackathon, managing registrations, mentoring participant teams, and coordinating judge evaluations.",
-    role: "Hackathon Organizer",
-    badge: "Co-Curricular"
-  },
-  {
-    title: "Event Coordinator & Anchoring – INFORIA 2K25",
-    description: "Coordinated technical events and served as the main stage anchor, speaking in front of large crowds and managing the summit flow.",
-    role: "Stage Anchor & Coordinator",
-    badge: "Public Speaking"
-  }
-];
+
+
 
 // Brand New Internships Data
 export const internshipsList = [
@@ -349,7 +319,7 @@ export const footerContent = {
 // EmailJS Configuration
 // Will read directly from environment variables in Vite (starting with VITE_)
 export const emailjsConfig = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_EMAILJS_SERVICE_ID",
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_EMAILJS_TEMPLATE_ID",
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY",
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "Shazzy123$",
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "wazee123$",
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "OspQWmRzsflbM7zm7",
 };

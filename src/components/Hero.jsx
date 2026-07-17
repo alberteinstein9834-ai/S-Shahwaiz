@@ -53,7 +53,9 @@ const toggleMute = (e) => {
 };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#f93838b6] " >
+    <section 
+    id="home"
+    className="relative w-full h-screen overflow-hidden bg-[#f93838b6] " >
       {/* Background Video */}
  <video
   ref={videoRef}
@@ -61,6 +63,9 @@ const toggleMute = (e) => {
   muted={isMuted}
   playsInline
   preload="auto"
+  crossOrigin="anonymous"
+  controlsList="nodownload"
+  poster="/images/poster_img.jpg"
   onPlay={() => setIsPlaying(true)}
   onPause={() => setIsPlaying(false)}
   onEnded={() => setIsPlaying(false)}
